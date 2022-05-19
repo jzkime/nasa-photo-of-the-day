@@ -1,3 +1,32 @@
+* {
+  margin: 0;
+  padding: 0;
+  max-width: 100%;
+  /* border: 1px solid red; */
+  color: white;
+  box-sizing: border-box;
+}
+
+a, a:visited {
+  text-decoration: none;
+  color: #ffffff;
+}
+
+html {
+  background-color: black;
+  width: 100vw;
+  height: 100%;
+  background-color: black;
+  object-fit: cover;
+}
+
+body {
+  box-sizing: border-box;
+  padding: 2%;
+  background-color: #000000;
+  border-radius: 10px;
+}
+
 .App {
   text-align: center;
 }
@@ -35,4 +64,69 @@
   to {
     transform: rotate(360deg);
   }
+}
+
+.header-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  align-items: center;
+  height: 80px;
+  width: 100vw;
+  margin: 0 auto;
+
+}
+
+.title {
+  text-shadow: 3px 3px #282c34 ;
+}
+
+.apod-content {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 2rem;
+}
+
+#image-of-day {
+  width: 50vw;
+}
+
+.copyright {
+  text-align: end;
+}
+
+.apod-info {
+  width: 90%;
+  margin: 1rem;
+  text-align: start;
+  background-color: rgb(255, 244, 244);
+  padding: 1.4rem;
+  border-radius: 10px;
+}
+
+.apod-info h3 {
+    text-align: center;
+  }
+  
+.apod-info h3, .apod-info p {
+  color: black;
+}
+
+.footer-container {
+  width: 100%;
+  height: 50px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-image: url("https://api.nasa.gov/assets/img/hero.png");
+  background-position: center;
+  background-attachment: fixed;
+  background-repeat: no-repeat;
+  background-color: black;
+  border-radius: 20px;
+}
+
+.footer-container img {
+  width: 8%;
 }
