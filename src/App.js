@@ -8,8 +8,6 @@ import { NASA_APOD } from './constants/constants'
 import axios from 'axios'
 import Search from './components/Search'
 
-
-
 const StyledAppCont = styled.div`
   text-align: center;
   display: flex;
@@ -18,8 +16,7 @@ const StyledAppCont = styled.div`
   background-color: ${pr => pr.theme.background};
   padding: 2%;
 `
-
-function App(props) {
+function App() {
   const [ apodToday, setAPOD ] = useState(null);
   const [ searchDate, setSearchDate ] = useState("");
 

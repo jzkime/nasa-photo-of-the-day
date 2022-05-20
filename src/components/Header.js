@@ -18,7 +18,7 @@ import styled from 'styled-components'
         }
     `
 
-export default function Header(props) {
+export default function Header() {
 
     return (
         <StyledHeader>

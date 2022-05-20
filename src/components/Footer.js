@@ -11,14 +11,14 @@ border-radius: 20px;
 margin: 0 auto;
 `
 const StyledGit = styled.img`
-    width: 5%;
+    width: 10%;
 `
 
-export default function Footer(props) {
+export default function Footer() {
 
     return (
-        <div className="footer-container">
+        <StyledFooter>
             <a href="https://github.com/jzkime" rel='noreferrer' target="_blank" ><StyledGit src="https://cdn-icons-png.flaticon.com/512/25/25231.png" /></a>
-        </div>
+        </StyledFooter>
     )
 }

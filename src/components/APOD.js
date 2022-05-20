@@ -10,7 +10,7 @@ const StyledAPOD = styled.div`
     padding: 2rem;
 `
 export default function APOD(props) {
-    const { apodToday, searchDate } = props;
+    const { apodToday } = props;
     return (
         <StyledAPOD>
            { apodToday ? <ApodComp apodToday={apodToday}/> : <h1>loading</h1> }

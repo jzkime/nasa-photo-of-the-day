@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React from 'react'
 import styled from 'styled-components'
 
 const StyledSearch = styled.div`
@@ -21,10 +21,6 @@ const StyledLabel = styled.label`
 const StyledInput = styled.input`
 color: black;
 width: 50%;
-`
-
-const StyledDivButtons = styled.div`
-    display: flex;
 `
 
 const StyledButton = styled.button`
