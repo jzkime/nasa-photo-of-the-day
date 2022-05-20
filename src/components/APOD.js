@@ -1,18 +1,19 @@
-import React, { useState, useEffect } from 'react'
-import { NASA_APOD } from '../constants/constants'
+import React from 'react'
 import ApodComp from './ApodComp'
-import axios from 'axios'
-export default function APOD(props) {
-    const [ apodToday, setAPOD ] = useState(null);
+import styled from 'styled-components'
 
-    useEffect(() => {
-        axios.get(`${NASA_APOD}`)
-        .then((res) => {
-          setAPOD(res.data)
-        }).catch(err => console.error(err))
-      }, [])
-    
+const StyledAPOD = styled.div`
+    width: 90%
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 2rem;
+`
+export default function APOD(props) {
+    const { apodToday, searchDate } = props;
     return (
-        apodToday ? <ApodComp  apodToday={apodToday} /> : <h3>Loading...</h3> 
+        <StyledAPOD>
+           { apodToday ? <ApodComp apodToday={apodToday}/> : <h1>loading</h1> }
+        </StyledAPOD>
     )
 }
