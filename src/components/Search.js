@@ -64,7 +64,8 @@ export default function Search({ setWhatDo }) {
 
     const changeThing = (evt) => {
         const val = dateInput.value;
-        if(val[4] === "-" && val[7] === "-") {
+
+        if( val[4] === "-" && val[7] === "-") {
             setWhatDo(`&date=${dateInput.value}`)
           }
         evt.preventDefault();
