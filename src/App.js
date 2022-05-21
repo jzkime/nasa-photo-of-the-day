@@ -17,38 +17,25 @@ const StyledAppCont = styled.div`
   padding: 2%;
 `
 function App() {
-  const [ apodToday, setAPOD ] = useState(null);
-  const [ searchDate, setSearchDate ] = useState("");
+  let today = new Date();
+  today = today.toISOString().split('T')[0];
+  const [ apodToday, setAPOD ] = useState(today);
+  const [ whatDo, setWhatDo ] = useState("")
 
   useEffect(() => {
-    if(apodToday === null){
-      axios.get(`${NASA_APOD}`)
-      .then((res) => {
-        setAPOD(res.data)
-      }).catch(err => console.error(err))
-    }
-    }, [apodToday])
-
-  useEffect(() => {
-      if(searchDate === "") {return setAPOD(null)};
-
-      if(searchDate[4] === "-" && searchDate[7] === "-") {
-          const looking = "&date=" + searchDate
-          axios.get(`${NASA_APOD}${looking}`)
+          axios.get(`${NASA_APOD}${whatDo}`)
           .then((res) => {
-                setAPOD(res.data)
+                setAPOD(res.data[0]? res.data[0] : res.data)
+                // console.log(res.data, whatDo)
           }).catch(err => console.error(err + " hello, this is wrong"))
-      }
-      return () => {
-        setSearchDate("");
-      } 
-  }, [searchDate])
+      
+  }, [whatDo])
 
   return (
     <StyledAppCont>
       <Header />
-      <Search setSearchDate={setSearchDate} searchDate={searchDate} setAPOD={setAPOD} />
-     { apodToday ? <APOD searchDate={searchDate} apodToday={apodToday} />  : <h1>loading...</h1> }
+      <Search setWhatDo={setWhatDo} whatDo={whatDo} setAPOD={setAPOD} />
+     { apodToday ? <APOD apodToday={apodToday} />  : <h1>loading...</h1> }
       <Footer />
     </StyledAppCont>
   );

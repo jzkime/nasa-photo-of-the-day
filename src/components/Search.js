@@ -1,14 +1,14 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 import styled from 'styled-components'
 
 const StyledSearch = styled.div`
-margin: 0 auto;
-margin-top: 1rem;
-width: 90%;
-border-radius: 10px;
-text-align: center;
-height: 130px;
-color: ${pr => pr.theme.primaryColor};
+    margin: 0 auto;
+    margin-top: 1rem;
+    width: 90%;
+    border-radius: 10px;
+    text-align: center;
+    // height: 130px;
+    color: ${pr => pr.theme.primaryColor};
 `
 
 const StyledLabel = styled.label`
@@ -19,35 +19,61 @@ const StyledLabel = styled.label`
 `
 
 const StyledInput = styled.input`
-color: black;
-width: 50%;
+    color: black;
+    width: 50%;
 `
 
 const StyledButton = styled.button`
     width: 10%;
     background-color: ${pr => pr.theme.background};
+    cursor: pointer;
+
+    &hover {
+        cursor: pointer;
+    }
 `
 
-export default function Search({setSearchDate, setAPOD }) {
+let count = 1;
 
-    const changeDate = (evt) => {
-        if(evt.key === "Enter") setSearchDate(evt.target.value)
+export default function Search({ setWhatDo }) {
+
+
+    const clearInput = () => {
+        const dateInput = document.getElementById('enterDateInput')
+        dateInput.value = "";
     }
 
-    const reset = () => {
-        setAPOD(null)
+    const changeThing = (evt) => {
+        evt.preventDefault();
+        console.log(evt)
+        const dateInput = document.getElementById('enterDateInput')
+        setWhatDo(`&date=${dateInput.value}`)
+        clearInput()
     }
+
+
+    const setRandom = () => {
+        setWhatDo(`&count=${count}`)
+        count = count === 1 ? 2 : 1;
+    }
+
+
 
     return (
         <StyledSearch>
             <p>From the APOD page: <br/>
               Each day a different image or photograph of our fascinating universe is featured, <br/>
               along with a brief explanation written by a professional astronomer.</p>
+              
+            <form onSubmit={changeThing}>
+                <StyledLabel>Search Date
+                    <StyledInput type="text" id='enterDateInput' />
 
-            <StyledLabel>Search Date
-                <StyledInput type="text" onKeyDown={changeDate} placeholder="YYYY-MM-DD" id="dateInput"/>
-                <StyledButton onClick={reset}>reset</StyledButton>
-            </StyledLabel>
+                    <StyledButton type="submit" > search date </StyledButton>
+                </StyledLabel>
+            <button type="button" onClick={() => setWhatDo("")}>reset</button>
+            <button type='button' onClick={setRandom}>random</button>
+            </form>
         </StyledSearch>
     )
 }
