@@ -63,8 +63,11 @@ export default function Search({ setWhatDo }) {
     }
 
     const changeThing = (evt) => {
+        const val = dateInput.value;
+        if(val[4] === "-" && val[7] === "-") {
+            setWhatDo(`&date=${dateInput.value}`)
+          }
         evt.preventDefault();
-        setWhatDo(`&date=${dateInput.value}`)
         clearInput()
     }
 
@@ -85,7 +88,7 @@ export default function Search({ setWhatDo }) {
               
             <form onSubmit={changeThing} style={style} >
                 <StyledLabel>Search Date
-                    <StyledInput type="text" id='enterDateInput' onChange={inputChange}/>
+                    <StyledInput type="text" id='enterDateInput' onChange={inputChange} placeholder="YYYY-MM-DD" />
                     
                     {hasSomething && <StyledButton type="submit" > search date </StyledButton> }
                 </StyledLabel>

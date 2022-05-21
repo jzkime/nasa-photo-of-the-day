@@ -21,10 +21,11 @@ function App() {
   const [ whatDo, setWhatDo ] = useState("")
 
   useEffect(() => {
-          axios.get(`${NASA_APOD}${whatDo}`)
-          .then((res) => {
-                setAPOD(res.data[0]? res.data[0] : res.data)
-          }).catch(err => console.error(err + " hello, this is wrong"))
+
+      axios.get(`${NASA_APOD}${whatDo}`)
+      .then((res) => {
+            setAPOD(res.data[0]? res.data[0] : res.data)
+      }).catch(err => console.error(err + " hello, this is wrong"))
       
   }, [whatDo])
 
