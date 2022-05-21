@@ -17,16 +17,13 @@ const StyledAppCont = styled.div`
   padding: 2%;
 `
 function App() {
-  let today = new Date();
-  today = today.toISOString().split('T')[0];
-  const [ apodToday, setAPOD ] = useState(today);
+  const [ apodToday, setAPOD ] = useState([]);
   const [ whatDo, setWhatDo ] = useState("")
 
   useEffect(() => {
           axios.get(`${NASA_APOD}${whatDo}`)
           .then((res) => {
                 setAPOD(res.data[0]? res.data[0] : res.data)
-                // console.log(res.data, whatDo)
           }).catch(err => console.error(err + " hello, this is wrong"))
       
   }, [whatDo])

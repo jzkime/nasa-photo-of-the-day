@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react'
+import React, { useState } from 'react'
 import styled from 'styled-components'
 
 const StyledSearch = styled.div`
@@ -11,11 +11,18 @@ const StyledSearch = styled.div`
     color: ${pr => pr.theme.primaryColor};
 `
 
+const style = {
+    display: "flex",
+    flexWrap: "wrap",
+    justifyContent: "space-evenly"
+}
+
 const StyledLabel = styled.label`
     display: flex;
     flex-direction: column;
     align-items: center;
     margin: 1rem;
+    width: 100%;
 `
 
 const StyledInput = styled.input`
@@ -24,40 +31,51 @@ const StyledInput = styled.input`
 `
 
 const StyledButton = styled.button`
-    width: 10%;
-    background-color: ${pr => pr.theme.background};
+    width: 100px;
+    background-color: ${pr => pr.theme.primaryColor};
     cursor: pointer;
+    color: white;
+    margin-top: 1rem;
+    border-radius: 10px;
 
-    &hover {
+    &:hover {
         cursor: pointer;
+        transform: scale(1.1);
+        background-color: white;
+        color: ${pr => pr.theme.otherColorCauseCan};
     }
 `
 
 let count = 1;
 
 export default function Search({ setWhatDo }) {
-
+    const [ hasSomething, setHasSomething ] = useState(null)
+    const dateInput = document.getElementById('enterDateInput')
 
     const clearInput = () => {
-        const dateInput = document.getElementById('enterDateInput')
         dateInput.value = "";
+        setHasSomething(null)
+    }
+
+    const reset = () => {
+        clearInput();
+        setWhatDo("");
     }
 
     const changeThing = (evt) => {
         evt.preventDefault();
-        console.log(evt)
-        const dateInput = document.getElementById('enterDateInput')
         setWhatDo(`&date=${dateInput.value}`)
         clearInput()
     }
 
+    const inputChange = () => {
+        setHasSomething(dateInput.value)
+    }
 
     const setRandom = () => {
         setWhatDo(`&count=${count}`)
         count = count === 1 ? 2 : 1;
     }
-
-
 
     return (
         <StyledSearch>
@@ -65,14 +83,14 @@ export default function Search({ setWhatDo }) {
               Each day a different image or photograph of our fascinating universe is featured, <br/>
               along with a brief explanation written by a professional astronomer.</p>
               
-            <form onSubmit={changeThing}>
+            <form onSubmit={changeThing} style={style} >
                 <StyledLabel>Search Date
-                    <StyledInput type="text" id='enterDateInput' />
-
-                    <StyledButton type="submit" > search date </StyledButton>
+                    <StyledInput type="text" id='enterDateInput' onChange={inputChange}/>
+                    
+                    {hasSomething && <StyledButton type="submit" > search date </StyledButton> }
                 </StyledLabel>
-            <button type="button" onClick={() => setWhatDo("")}>reset</button>
-            <button type='button' onClick={setRandom}>random</button>
+                <StyledButton type="button" onClick={reset}>reset</StyledButton>
+                <StyledButton type='button' onClick={setRandom}>random</StyledButton>
             </form>
         </StyledSearch>
     )

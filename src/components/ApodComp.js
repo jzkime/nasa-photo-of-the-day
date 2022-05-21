@@ -18,6 +18,15 @@ const StyledInfo = styled.div`
 }
 `
 
+const StyledImage = styled.img`
+  width: 70vw;
+  transition: all 0.3s;
+
+  &:hover {
+    transform: scale(1.02);
+  }
+`
+
 export default function ApodComp(props) {
   const { apodToday } = props
   const { hdurl, copyright, title, date, explanation } = apodToday;
@@ -25,7 +34,7 @@ export default function ApodComp(props) {
     return (
       <div className="apod-content">
       <div className='image-container'>
-          <img src={hdurl} id="image-of-day" alt="random NASA APOD" />
+          <StyledImage src={hdurl} id="image-of-day" alt="random NASA APOD" />
           <p className='copyright'>&copy; {copyright}</p>
       </div>
       <StyledInfo>

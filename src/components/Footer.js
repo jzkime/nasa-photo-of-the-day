@@ -12,6 +12,10 @@ margin: 0 auto;
 `
 const StyledGit = styled.img`
     width: 10%;
+
+    &:hover {
+        transform: scale(1.1);
+    }
 `
 
 export default function Footer() {
