@@ -42,7 +42,7 @@ const StyledButton = styled.button`
         cursor: pointer;
         transform: scale(1.1);
         background-color: white;
-        color: ${pr => pr.theme.otherColorCauseCan};
+        color: ${pr => pr.theme.tertiary};
     }
 `
 

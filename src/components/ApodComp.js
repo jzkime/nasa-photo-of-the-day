@@ -8,33 +8,39 @@ const StyledInfo = styled.div`
   background-color: ${pr => pr.theme.primaryColor};
   padding: 1.4rem;
   border-radius: 10px;
-  color: ${pr => pr.theme.otherColorCauseCan};
-
-  transition: 0.2s;
-
-  &:hover {
-    transform: scale(1.01);
-    transition: 0.2s
+  color: ${pr => pr.theme.tertiary};
 }
 `
 
 const StyledImage = styled.img`
-  width: 70vw;
+  width: 60vw;
   transition: all 0.3s;
 
   &:hover {
     transform: scale(1.02);
   }
 `
+const StyledVid = styled.iframe`
+  height: 70vh;
+  width: 70vw;
+  transition: all 0.3s;
+`
 
 export default function ApodComp(props) {
   const { apodToday } = props
-  const { hdurl, copyright, title, date, explanation } = apodToday;
+  const { hdurl, copyright, title, date, explanation, media_type, url } = apodToday;
 
     return (
       <div className="apod-content">
       <div className='image-container'>
-          <StyledImage src={hdurl} id="image-of-day" alt="random NASA APOD" />
+        {media_type === "video" ? 
+          <StyledVid src={url} className="image-of-day"
+          allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+          sandbox='' >
+          </StyledVid>
+        :
+          <StyledImage src={hdurl} className="image-of-day" alt="random NASA APOD" />
+        }
           <p className='copyright'>&copy; {copyright}</p>
       </div>
       <StyledInfo>

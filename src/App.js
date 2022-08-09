@@ -14,7 +14,6 @@ const StyledAppCont = styled.div`
   flex-direction: column;
   align-content: center;
   background-color: ${pr => pr.theme.background};
-  padding: 2%;
 `
 function App() {
   const [ apodToday, setAPOD ] = useState([]);

@@ -1,21 +1,18 @@
 import React from 'react'
 import styled from 'styled-components'
 
-const StyledFooter = styled.footer`
-width: 100%;
-height: 50px;
-display: flex;
-justify-content: center;
-align-items: center;
-border-radius: 20px;
-margin: 0 auto;
+const StyledFooter = styled.div`
+    background-color: ${pr => pr.theme.primaryColor};
+    padding: 3%;
+    width: 100%;
+    height: 50px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 0 auto;
 `
 const StyledGit = styled.img`
     width: 10%;
-
-    &:hover {
-        transform: scale(1.1);
-    }
 `
 
 export default function Footer() {

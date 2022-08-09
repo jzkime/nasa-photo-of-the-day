@@ -2,19 +2,19 @@ import React from 'react'
 import styled from 'styled-components'
 
     const StyledHeader = styled.div`
-        color: ${pr => pr.theme.otherColorCauseCan};
+        color: ${pr => pr.theme.primaryColor};
+        padding: 3%;
         display: flex;
         justify-content: space-around;
         background-color: ${props => props.theme.primaryColor};
         align-items: center;
         height: 80px;
-        width: 90vw;
+        width: 100vw;
         margin: 0 auto;
         align-text: center;
-        border-radius: 15px;
 
         a {
-            color: ${pr => pr.theme.otherColorCauseCan};
+            color: ${pr => pr.theme.tertiary};
         }
     `
 
