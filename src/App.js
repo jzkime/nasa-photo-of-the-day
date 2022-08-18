@@ -18,15 +18,16 @@ const StyledAppCont = styled.div`
 function App() {
   const [ apodToday, setAPOD ] = useState([]);
   const [ whatDo, setWhatDo ] = useState("")
-  const [ error, setError ] = useState(false)
+  const [ error, setError ] = useState("")
 
   useEffect(() => {
 
       axios.get(`${NASA_APOD}${whatDo}`)
       .then((res) => {
             setAPOD(res.data[0]? res.data[0] : res.data)
-      }).catch(() =>{
-          setError(true)
+      }).catch((err) =>{
+        console.log(err)
+          setError(err.response.data.msg)
       } )
       
       return setError(false);
@@ -36,7 +37,7 @@ function App() {
     <StyledAppCont>
       <Header />
       <Search setWhatDo={setWhatDo} whatDo={whatDo} setAPOD={setAPOD} />
-      { error && <h2>sorry that date is not valid!</h2>}
+      { error && <h2>{error}</h2>}
 
      { apodToday ? <APOD apodToday={apodToday} />  : <h1>loading...</h1> }
       <Footer />

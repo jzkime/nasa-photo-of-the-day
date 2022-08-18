@@ -13,7 +13,7 @@ a, a:visited {
 html {
   width: 100vw;
   height: 100%;
-  background-color: #E5989B;
+  background-color: #8A9DBC;
 }
 
 body {
@@ -36,4 +36,22 @@ body {
   
 .apod-info h3, .apod-info p {
   color: black;
+}
+
+h2, .image-container p {
+  padding-top: 2%;
+}
+
+.desc-container {
+  display: flex;
+  flex-direction: column;
+}
+
+.desc-container a {
+  padding-top: 2%;
+  align-self: center;
+}
+
+.footer-container a img {
+  width: 10%;
 }

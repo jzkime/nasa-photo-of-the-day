@@ -1,5 +1,5 @@
 export default {
-    primaryColor: "#E5989B",
-    background: "#fff3f5", 
-    tertiary: "#46244C", 
+    primaryColor: "#8A9DBC",
+    background: "#FFFDFD", 
+    tertiary: "#222E50", 
 }

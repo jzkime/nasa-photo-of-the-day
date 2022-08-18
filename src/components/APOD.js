@@ -13,7 +13,7 @@ export default function APOD(props) {
     const { apodToday } = props;
     return (
         <StyledAPOD>
-           { apodToday ? <ApodComp apodToday={apodToday}/> : <h1>loading</h1> }
+           { apodToday ? <ApodComp apodToday={apodToday}/> : <h1>loading...</h1> }
         </StyledAPOD>
     )
 }

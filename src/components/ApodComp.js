@@ -36,17 +36,18 @@ export default function ApodComp(props) {
         {media_type === "video" ? 
           <StyledVid src={url} className="image-of-day"
           allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-          sandbox='' >
+          sandbox="allow-popups allow-scripts allow-popups-to-escape-sandbox allow-same-origin allow-presentation" >
           </StyledVid>
         :
-          <StyledImage src={hdurl} className="image-of-day" alt="random NASA APOD" />
+          <StyledImage src={url} className="image-of-day" alt="random NASA Astrology Photo of the Day" />
         }
           <p className='copyright'>&copy; {copyright}</p>
       </div>
-      <StyledInfo>
+      <StyledInfo className='desc-container'>
           <h3>{title}</h3>
           <p className='date'>{date}</p>
           <p className='explanation'>{explanation}</p>
+          {media_type === "image" && <a href={hdurl} target='no_blank'>high-definition ver</a>}
       </StyledInfo>
   </div>
     )
