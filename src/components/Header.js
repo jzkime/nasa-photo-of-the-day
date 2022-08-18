@@ -14,7 +14,7 @@ import styled from 'styled-components'
         align-text: center;
 
         a {
-            color: ${pr => pr.theme.tertiary};
+            color: ${pr => pr.theme.darkText};
         }
     `
 

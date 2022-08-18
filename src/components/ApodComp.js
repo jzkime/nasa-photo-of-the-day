@@ -5,10 +5,10 @@ const StyledInfo = styled.div`
   width: 90%;
   margin: 1rem;
   text-align: start;
-  background-color: ${pr => pr.theme.primaryColor};
+  background-color: ${pr => pr.theme.tertiary};
   padding: 1.4rem;
   border-radius: 10px;
-  color: ${pr => pr.theme.tertiary};
+  color: ${pr => pr.theme.background};
 }
 `
 

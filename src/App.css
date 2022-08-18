@@ -21,9 +21,11 @@ body {
 }
 
 .apod-content {
+  width: 85%;
   display: flex;
-  flex-direction: column;
   align-items: center;
+  justify-content: space-around;
+  margin: 0 auto;
 }
 
 .copyright {
@@ -54,4 +56,15 @@ h2, .image-container p {
 
 .footer-container a img {
   width: 10%;
+}
+
+@media (max-width: 900px) {
+  .apod-content {
+    max-width: 50%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    margin: 0 auto;
+  }
 }
